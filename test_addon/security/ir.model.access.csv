@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_test_newmodel_manager,test_newmodel_manager,model_test_newmodel,,1,1,1,1
