@@ -1,0 +1,27 @@
+from odoo import models, fields, api
+from odoo.exceptions import UserError
+
+class Siparis(models.Model):
+    _name = 'siparis.siparis'
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = 'Sipariş Modeli'
+
+    name = fields.Char(string='Sipariş Kodu', required='True', default='Yeni')
+    siparis_turu = fields.Selection([
+                        ('ihracat', 'İhracat'),
+                        ('icpiyasa', 'İç Piyasa'),
+                        ('ithalat', 'İthalat')
+                    ],
+                    default='ihracat', string='Sipariş Türü')
+    musteri_id = fields.Many2one('res.partner', string='Müşteri Adı', required=True, tracking=True)
+    siparis_tarihi = fields.Date(string='Sipariş Tarihi', required='True', default=fields.Date.context_today)
+    siparis_satir_ids = fields.One2many('siparis.siparis.satir','siparis_id', string='Sipariş' )
+    image_1200 = fields.Image(string="Resim", max_width=1024, max_height=1024)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('name', 'Yeni') == 'Yeni':
+            siparis_turu = vals['siparis_turu']
+            sequence_code = f'{siparis_turu}_sequence'
+            vals['name'] = self.env['ir.sequence'].next_by_code(sequence_code) or 'New'
+        return super().create(vals)

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="siparis_views_form" model="ir.ui.view">
+        <field name="name">siparis.views.form</field>
+        <field name="model">siparis.siparis</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                    <group>
+                        <group>
+                            <field name="musteri_id"/>
+                            <field name="siparis_turu"/>
+                        </group>
+                        <group>
+                            <field name="siparis_tarihi"/>
+                            <field name="image_1200" widget="image" class="oe_avatar"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sipariş Satırları">
+                            <field name="siparis_satir_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="product_id"/>
+                                    <field name="siparis_id"/>
+                                    <field name="depo"/>
+                                    <field name="adet" sum="Toplam Adet"/>
+                                    <field name="fiyat"/>
+                                    <field name="toplam_tutar" sum="Alt Toplam"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter Alanı -->
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids"/>
+                    <field name="message_follower_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="siparis_views_tree" model="ir.ui.view">
+        <field name="name">siparis.views.tree</field>
+        <field name="model">siparis.siparis</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="siparis_turu"/>
+                <field name="musteri_id"/>
+                <field name="siparis_tarihi"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Sıralama Sequence -->
+    <record id="sequence_ihracat_siparis_siparis" model="ir.sequence">
+        <field name="name">Siparis İhracat</field>
+        <field name="code">ihracat_sequence</field>
+        <field name="prefix">IHR</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="sequence_ithalat_siparis_siparis" model="ir.sequence">
+        <field name="name">Siparis İthalat</field>
+        <field name="code">ithalat_sequence</field>
+        <field name="prefix">ITH</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="sequence_icpiyasa_siparis_siparis" model="ir.sequence">
+        <field name="name">Siparis İç Piyasa</field>
+        <field name="code">icpiyasa_sequence</field>
+        <field name="prefix">ICP</field>
+        <field name="padding">4</field>
+    </record>
+
+    <!-- Aksiyon Butonumuz -->
+    <record id="action_siparis_views" model="ir.actions.act_window">
+        <field name="name">Siparisler</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">siparis.siparis</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Ana Menü -->
+    <menuitem id="root_menu" name="Siparis" sequence="1"/>
+
+    <!-- Root Altında Siparişler Alt Menü -->
+    <menuitem id="siparis_menu" name="Siparisler" parent="root_menu" sequence="10"/>
+
+    <!-- Siparişler Altında "Diğer Siparişler" Menüsü -->
+    <menuitem id="siparis2_menu" name="Diğer Siparişler" parent="siparis_menu" action="action_siparis_views" sequence="10"/>
+</odoo>

@@ -37,8 +37,8 @@
     'data': [
         'data/slide_channel_data_v14.xml',
         'data/slide_channel_data_v13.xml',
-        'data/slide_channel_data_v15.xml',
-        'data/slide_channel_data_v16.xml',
+        #'data/slide_channel_data_v15.xml',
+        #'data/slide_channel_data_v16.xml',
         'security/openacademy_groups.xml',
         'security/openacademy_security.xml',
         'security/ir.model.access.csv',

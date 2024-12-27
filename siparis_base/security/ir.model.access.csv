@@ -1,0 +1,5 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_siparis_user,siparis.siparis.user,model_siparis_siparis,base.group_user,1,1,1,1
+access_siparis_satir_user,siparis.siparis.satir.user,model_siparis_siparis_satir,base.group_user,1,1,1,1
+access_siparis_siparis_satir_manager,siparis_siparis_satir_manager,model_siparis_siparis_satir,base.group_user,1,1,1,1
+access_siparis_siparis_depo_manager,siparis_siparis_depo_manager,model_siparis_siparis_depo,base.group_user,1,1,1,1
