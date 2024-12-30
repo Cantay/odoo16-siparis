@@ -17,7 +17,10 @@ class Siparis(models.Model):
     siparis_tarihi = fields.Date(string='Sipariş Tarihi', required='True', default=fields.Date.context_today)
     siparis_satir_ids = fields.One2many('siparis.siparis.satir','siparis_id', string='Sipariş' )
     image_1200 = fields.Image(string="Resim", max_width=1024, max_height=1024)
-
+    siparis_durum_id = fields.Many2one('siparis.siparis.durum', string='Durum', tracking=True)
+    siparis_etiket_ids = fields.Many2many('siparis.siparis.etiket','siparis_siparis_etiket_rel','siparis_id','etiket_id', string='Etiket')
+    siparis_dokuman_ids = fields.Many2many('ir.attachment','siparis_siparis_dokuman_rel','siparis_id','dokuman_id')
+    
     @api.model
     def create(self, vals):
         if vals.get('name', 'Yeni') == 'Yeni':
@@ -25,3 +28,13 @@ class Siparis(models.Model):
             sequence_code = f'{siparis_turu}_sequence'
             vals['name'] = self.env['ir.sequence'].next_by_code(sequence_code) or 'New'
         return super().create(vals)
+
+    def open_form_view(self):
+        return {
+            'type': 'ir.actions.act_window',
+            'name': 'Form Ac',
+            'view_mode': 'form',
+            'res_model': 'siparis.siparis',
+            'res_id': self.id,
+            'target': 'current', # "new" tanımı ilgili formu poppup olarak açar
+        }

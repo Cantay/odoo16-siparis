@@ -6,10 +6,20 @@
     'license': 'AGPL-3',
     'depends': ['sale','base'],
     'data': [
+        'views/data.xml',
+        'security/siparis_security.xml',
         'security/ir.model.access.csv',
         'views/siparis_views.xml',
         'views/siparis_satir_views.xml',
+        'views/siparis_depo_views.xml',
+        'views/siparis_durum_views.xml',
+        'views/siparis_etiket_views.xml',
     ],
+    'assets': {
+    'web.assets_backend': [
+        'siparis_base/static/src/css/custom.css',
+        ],
+    },
     'website': '',
     'installable': True,
     'application': True,

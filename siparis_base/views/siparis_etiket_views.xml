@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="siparis_etiket_views_form" model="ir.ui.view">
+        <field name="name">siparis.etiket.views.form</field>
+        <field name="model">siparis.siparis.etiket</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="renk" widget="color_picker"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="siparis_etiket_views_tree" model="ir.ui.view">
+        <field name="name">siparis.etiket.views.tree</field>
+        <field name="model">siparis.siparis.etiket</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+                <field name="renk" widget="color_picker" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Aksiyon Butonumuz -->
+    <record id="action_siparis_etiket_views" model="ir.actions.act_window">
+        <field name="name">Etiket Tanım</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">siparis.siparis.etiket</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Siparişler Altında "Diğer Siparişler" Menüsü -->
+    <menuitem id="siparis_etiket_tanim_menu" name="Sipariş Etiket" parent="siparis_ayarlar_menu" action="action_siparis_etiket_views" sequence="10"/>
+</odoo>

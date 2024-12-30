@@ -9,6 +9,7 @@ class SiparisSatir(models.Model):
     name = fields.Char(string='Ürün Açıklaması', tracking=True)
     product_id = fields.Many2one('product.product', string='Ürün', required=True)
     siparis_id = fields.Many2one('siparis.siparis', string='Siparis No', required=True)
+    siparis_tarihi = fields.Date(related='siparis_id.siparis_tarihi', string="Siparis Tarihi", store=True)
     adet = fields.Float(string='Adet', default=1.0)
     fiyat = fields.Float(related='product_id.lst_price', string='Fiyat' )
     toplam_tutar = fields.Float(string='Toplam Tutar', compute='_compute_alttoplam', store=True )

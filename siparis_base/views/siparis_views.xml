@@ -6,16 +6,21 @@
         <field name="model">siparis.siparis</field>
         <field name="arch" type="xml">
             <form>
+                <header>
+                    <field name="siparis_durum_id" widget="statusbar" options="{'clickable': 1}" />
+                </header>
                 <sheet>
                     <field name="name"/>
                     <group>
                         <group>
                             <field name="musteri_id"/>
                             <field name="siparis_turu"/>
+                            <field name="siparis_etiket_ids" widget="many2many_tags" options="{'color_field': 'renk'}" placeholder="Etiket Sec"/>
                         </group>
                         <group>
                             <field name="siparis_tarihi"/>
                             <field name="image_1200" widget="image" class="oe_avatar"/>
+                            <field name="siparis_dokuman_ids" widget="many2many_binary"/>
                         </group>
                     </group>
                     <notebook>
@@ -48,12 +53,13 @@
         <field name="name">siparis.views.tree</field>
         <field name="model">siparis.siparis</field>
         <field name="arch" type="xml">
-            <tree>
+            <tree editable="bottom">
                 <field name="id"/>
                 <field name="name"/>
                 <field name="siparis_turu"/>
                 <field name="musteri_id"/>
                 <field name="siparis_tarihi"/>
+                <button name="open_form_view" string="Edit" type="object"/>
             </tree>
         </field>
     </record>
