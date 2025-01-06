@@ -14,6 +14,8 @@
         'views/siparis_depo_views.xml',
         'views/siparis_durum_views.xml',
         'views/siparis_etiket_views.xml',
+        'report/siparis_rapor.xml',
+        'report/siparis_rapor_pdf.xml',
     ],
     'assets': {
     'web.assets_backend': [

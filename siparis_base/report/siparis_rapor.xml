@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<odoo>
+    <template id="template_siparis_rapor">
+        <t t-call="web.basic_layout">
+            <div class="page">
+                <img t-att-src="'data:image/png;base64,%s' % (docs.image_1200 or '')" alt="Product Image" width="150" height="auto"/>
+
+                <h2>Siparis Listesi</h2>
+                <small t-esc="docs.musteri_id.name" />
+                <p t-esc="docs.siparis_tarihi" />
+                <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Musteri Adı</th>
+                            <th>Siparis Kodu</th>
+                            <th>Siparis Turu</th>
+                            <th>Siparis Tarihi</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="docs" t-as="siparis">
+                            <tr>
+                                <td><span t-esc="siparis.musteri_id.name"/></td>
+                                <td><span t-esc="siparis.name"/></td>
+                                <td><span t-esc="siparis.siparis_turu"/></td>
+                                <td><span t-esc="siparis.siparis_tarihi"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+                <h3>Siparis Detay</h3>
+                 <table class="table table-condensed">
+                    <thead>
+                        <tr>
+                            <th>Urun Adı</th>
+                            <th>Urun Adet</th>
+                            <th>Urun Fiyat</th>
+                            <th>Toplam Fiyat</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="siparis.siparis_satir_ids" t-as="satir">
+                            <tr>
+                                <td><span t-esc="satir.product_id.name"/></td>
+                                <td><span t-esc="satir.adet"/></td>
+                                <td><span t-esc="satir.fiyat"/></td>
+                                <td><span t-esc="satir.toplam_tutar"/></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+</odoo>
