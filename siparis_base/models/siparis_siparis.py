@@ -37,10 +37,14 @@ class Siparis(models.Model):
     
     @api.model
     def create(self, vals):
-        if vals.get('name', 'Yeni') == 'Yeni':
+        if vals.get('name', 'Yeni') == 'Yeni': 
             siparis_turu = vals['siparis_turu']
             sequence_code = f'{siparis_turu}_sequence'
             vals['name'] = self.env['ir.sequence'].next_by_code(sequence_code) or 'New'
+        
+        if not vals.get('siparis_durum_id'):
+            vals['siparis_durum_id'] = 2
+            
         return super().create(vals)
 
     def open_form_view(self):
@@ -63,3 +67,35 @@ class Siparis(models.Model):
             'target': 'new', # "new" tanımı ilgili formu poppup olarak açar
             'domain': [('siparis_id', '=', self.id)],
         }
+        
+    def action_onayla(self):
+        for rec in self:
+            # Müşteri Kontrol
+            if not rec.musteri_id:
+                raise UserError('Müşteri bilgisi tanımlı değil!')
+            
+            if not rec.siparis_turu:
+                raise UserError('Sipariş türü tanımlı değil!')
+            
+            rec.write({
+                'siparis_durum_id': 3
+            })
+            
+            rec.message_post(
+                body= f"Siparis onaylandi. Siparis No: {rec.name}",
+                message_type='notification',
+                subtype_xmlid='mail.mt_note'
+            )
+            
+    def action_iptal(self):
+        for rec in self:
+            rec.write({
+                'siparis_durum_id': 5
+            })
+        
+        self.message_post(
+            body= f"Siparis İptal Edildi. Siparis No: {self.name}"
+        )
+        
+        raise UserError(f"Siparis İptal Edildi. Siparis No: {self.name}")
+        

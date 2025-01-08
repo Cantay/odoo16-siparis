@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="siparis_satir_views_tree" model="ir.ui.view">
+        <field name="name">siparis.satir.views.tree</field>
+        <field name="model">siparis.siparis.satir</field>
+        <field name="arch" type="xml">
+            <tree decoration-info="adet == 4">
+                <field name="name"/>
+                <field name="product_id"/>
+                <field name="siparis_id"/>
+                <field name="siparis_tarihi"/>
+                <field name="depo"/>
+                <field name="adet" sum="Toplam Adet"/>
+                <field name="fiyat"/>
+                <field name="toplam_tutar" sum="Alt Toplam"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form View -->
+    <record id="siparis_satir_views_form" model="ir.ui.view">
+        <field name="name">siparis.satir.views.form</field>
+        <field name="model">siparis.siparis.satir</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                </header>
+                <group>
+                    <group>
+                        <field name="name"/>
+                        <field name="product_id"/>
+                        <field name="adet"/>
+                    </group>
+                    <group>
+                        <field name="siparis_tarihi"/>
+                        <field name="siparis_id"/>
+                        <field name="depo"/>
+                        <field name="fiyat"/>
+                    </group>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <!-- Pivot View -->
+    <record id="siparis_satir_views_pivot" model="ir.ui.view">
+        <field name="name">siparis.satir.views.pivot</field>
+        <field name="model">siparis.siparis.satir</field>
+        <field name="arch" type="xml">
+            <pivot string="Siparis Pivot" display_quantity="true">
+                 <field name="product_id" type="row"/>
+                 <field name="depo" type="col"/>
+                 <field name="siparis_tarihi" type="col"/>
+                 <field name="adet" type="measure"/>
+                 <field name="toplam_tutar" type="measure"/>
+             </pivot>
+        </field>
+    </record>
+
+    <!-- Aksiyon Butonumuz -->
+    <record id="action_siparis_satir_views" model="ir.actions.act_window">
+        <field name="name">Siparis Satirlari</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">siparis.siparis.satir</field>
+        <field name="view_mode">tree,pivot</field>
+    </record>
+
+    <!-- Siparişler Altında "Sipariş Satir" Menüsü -->
+    <menuitem id="siparis_satir_menu" name="Sipariş Satırları" parent="siparis_menu" action="action_siparis_satir_views" sequence="11"/>
+</odoo>

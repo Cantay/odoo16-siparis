@@ -7,7 +7,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="siparis_durum_id" widget="statusbar" options="{'clickable': 1}" />
+                    <button name="action_onayla" 
+                    string="Onayla" 
+                    type="object" 
+                    attrs="{'invisible': [('siparis_durum_id', '!=', 2)]}"/>
+
+                    <button name="action_iptal" 
+                    string="İptal" 
+                    type="object" 
+                    attrs="{'invisible': [('siparis_durum_id', '!=', 3)]}"/>
+
+                    <field name="siparis_durum_id" widget="statusbar" options="{'clickable': 0}" />
                 </header>
                 <sheet>
                     <field name="name"/>
@@ -60,6 +70,7 @@
                 <field name="siparis_turu"/>
                 <field name="musteri_id"/>
                 <field name="siparis_tarihi"/>
+                <field name="siparis_durum_id"/>
                 <button name="open_form_view" string="Edit" type="object"/>
                 <button name="action_siparis_list" string="Detay" type="object"/>
             </tree>

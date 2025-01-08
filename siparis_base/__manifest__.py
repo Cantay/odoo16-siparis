@@ -9,7 +9,7 @@
         'views/data.xml',
         'security/siparis_security.xml',
         'security/ir.model.access.csv',
-        'views/siparis_views.xml',
+        'views/siparis_siparis_views.xml',
         'views/siparis_satir_views.xml',
         'views/siparis_depo_views.xml',
         'views/siparis_durum_views.xml',

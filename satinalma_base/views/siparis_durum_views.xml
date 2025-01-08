@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="siparis_durum_views_form" model="ir.ui.view">
+        <field name="name">siparis.durum.views.form</field>
+        <field name="model">siparis.siparis.durum</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="siparis_durum_views_tree" model="ir.ui.view">
+        <field name="name">siparis.durum.views.tree</field>
+        <field name="model">siparis.siparis.durum</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="sequence" widget="handle" />
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Aksiyon Butonumuz -->
+    <record id="action_siparis_durum_views" model="ir.actions.act_window">
+        <field name="name">Durum Tanım</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">siparis.siparis.durum</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Siparişler Altında "Ayarlar" Menüsü -->
+    <menuitem id="siparis_durum_tanim_menu" name="Durum Tanım" parent="siparis_ayarlar_menu" action="action_siparis_durum_views" sequence="20"/>
+</odoo>

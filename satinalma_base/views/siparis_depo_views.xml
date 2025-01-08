@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="siparis_depo_views_form" model="ir.ui.view">
+        <field name="name">siparis.depo.views.form</field>
+        <field name="model">siparis.siparis.depo</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <field name="name"/>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="siparis_depo_views_tree" model="ir.ui.view">
+        <field name="name">siparis.depo.views.tree</field>
+        <field name="model">siparis.siparis.depo</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="id"/>
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Aksiyon Butonumuz -->
+    <record id="action_siparis_depo_views" model="ir.actions.act_window">
+        <field name="name">Depo Tanım</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">siparis.siparis.depo</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Root Altında Siparişler Alt Menü -->
+    <menuitem id="siparis_ayarlar_menu" name="Ayarlar" parent="root_menu" sequence="20"/>
+
+    <!-- Siparişler Altında "Diğer Siparişler" Menüsü -->
+    <menuitem id="siparis_depo_tanim_menu" name="Depo Tanım" parent="siparis_ayarlar_menu" action="action_siparis_depo_views" sequence="10"/>
+</odoo>

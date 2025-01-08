@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <!-- Form View -->
+    <record id="satinalma_views_form" model="ir.ui.view">
+        <field name="name">satinalma.views.form</field>
+        <field name="model">satinalma.satinalma</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_onayla" 
+                    string="Onayla" 
+                    type="object" 
+                    attrs="{'invisible': [('satinalma_durum_id', '!=', 2)]}"/>
+
+                    <button name="action_iptal" 
+                    string="İptal" 
+                    type="object" 
+                    attrs="{'invisible': [('satinalma_durum_id', '!=', 3)]}"/>
+
+                    <field name="satinalma_durum_id" widget="statusbar" options="{'clickable': 0}" />
+                </header>
+                <sheet>
+                    <field name="name"/>
+                    <group>
+                        <group>
+                            <field name="musteri_id"/>
+                            <field name="satinalma_turu"/>
+                            <field name="satinalma_etiket_ids" widget="many2many_tags" options="{'color_field': 'renk'}" placeholder="Etiket Sec"/>
+                        </group>
+                        <group>
+                            <field name="satinalma_tarihi"/>
+                            <field name="image_1200" widget="image" class="oe_avatar"/>
+                            <field name="satinalma_dokuman_ids" widget="many2many_binary"/>
+                            <field name="taslak_satinalma"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Sipariş Satırları">
+                            <field name="satinalma_satir_ids">
+                                <tree>
+                                    <field name="name"/>
+                                    <field name="product_id"/>
+                                    <field name="satinalma_id"/>
+                                    <field name="depo"/>
+                                    <field name="adet" sum="Toplam Adet"/>
+                                    <field name="fiyat"/>
+                                    <field name="toplam_tutar" sum="Alt Toplam"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+                <!-- Chatter Alanı -->
+                <div class="oe_chatter">
+                    <field name="message_ids" widget="mail_thread"/>
+                    <field name="activity_ids"/>
+                    <field name="message_follower_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="satinalma_views_tree" model="ir.ui.view">
+        <field name="name">satinalma.views.tree</field>
+        <field name="model">satinalma.satinalma</field>
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="id"/>
+                <field name="name"/>
+                <field name="satinalma_turu"/>
+                <field name="musteri_id"/>
+                <field name="satinalma_tarihi"/>
+                <field name="satinalma_durum_id"/>
+                <button name="open_form_view" string="Edit" type="object"/>
+                <button name="action_satinalma_list" string="Detay" type="object"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Sıralama Sequence -->
+    <record id="sequence_ihracat_satinalma_satinalma" model="ir.sequence">
+        <field name="name">Satınalma İhracat</field>
+        <field name="code">ihracat_sequence</field>
+        <field name="prefix">IHR</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="sequence_ithalat_satinalma_satinalma" model="ir.sequence">
+        <field name="name">Satınalma İthalat</field>
+        <field name="code">ithalat_sequence</field>
+        <field name="prefix">ITH</field>
+        <field name="padding">4</field>
+    </record>
+
+    <record id="sequence_icpiyasa_satinalma_satinalma" model="ir.sequence">
+        <field name="name">Satınalma İç Piyasa</field>
+        <field name="code">icpiyasa_sequence</field>
+        <field name="prefix">ICP</field>
+        <field name="padding">4</field>
+    </record>
+
+    <!-- Aksiyon Butonumuz -->
+    <record id="action_satinalma_views" model="ir.actions.act_window">
+        <field name="name">Satınalmalar</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">satinalma.satinalma</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <!-- Ana Menü -->
+    <menuitem id="root_menu" name="Satınalma" sequence="1"/>
+
+    <!-- Root Altında Satınalmalar Alt Menü -->
+    <menuitem id="satinalma_menu" name="Satınalmalar" parent="root_menu" sequence="10"/>
+
+    <!-- Satınalmalar Altında "Diğer Satınalmalar" Menüsü -->
+    <menuitem id="satinalma2_menu" name="Diğer Satınalmalar" parent="satinalma_menu" action="action_satinalma_views" sequence="10"/>
+</odoo>

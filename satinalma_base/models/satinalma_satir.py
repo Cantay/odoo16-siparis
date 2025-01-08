@@ -1,19 +1,19 @@
 from odoo import models, fields, api
 from odoo.exceptions import UserError
 
-class SiparisSatir(models.Model):
-    _name = 'siparis.siparis.satir'
-    _description = 'Sipariş Satır Modeli'
+class SatinalmaSatir(models.Model):
+    _name = 'satinalma.satinalma.satir'
+    _description = 'Satinalma Satır Modeli'
 
     
     name = fields.Char(string='Ürün Açıklaması', tracking=True)
     product_id = fields.Many2one('product.product', string='Ürün', required=True)
-    siparis_id = fields.Many2one('siparis.siparis', string='Siparis No', required=True)
-    siparis_tarihi = fields.Date(related='siparis_id.siparis_tarihi', string="Siparis Tarihi", store=True)
+    satinalma_id = fields.Many2one('satinalma.satinalma', string='Satinalma No', required=True)
+    satinalma_tarihi = fields.Date(related='satinalma_id.satinalma_tarihi', string="Satinalma Tarihi", store=True)
     adet = fields.Float(string='Adet', default=2.0)
     fiyat = fields.Float(related='product_id.lst_price', string='Fiyat' )
     toplam_tutar = fields.Float(string='Toplam Tutar', compute='_compute_alttoplam', store=True )
-    depo = fields.Many2one('siparis.siparis.depo', string='Depo')
+    depo = fields.Many2one('satinalma.satinalma.depo', string='Depo')
     
 
     
