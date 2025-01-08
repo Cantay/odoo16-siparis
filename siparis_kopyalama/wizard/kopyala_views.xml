@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--    wizard form view-->
+    <record id="siparis_kopyala_wizard_view_form" model="ir.ui.view">
+        <field name="name">siparis.kopyala.wizard.view.form</field>
+        <field name="model">siparis.kopyala.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Sipariş Kopyala">
+                <group>
+                    <group>
+                        <field name="siparis_id"/>
+                        <field name="yeni_musteri"/>
+                        <field name="siparis_satir_kopyala"/>
+                    </group>
+                    <group>
+                        <field name="yeni_siparis_tarihi"/>
+                        <field name="yeni_siparis_turu"/>
+                        <field name="dokuman_kopyala"/>
+                    </group>
+                </group>
+                <footer>
+                   <button name="action_kopyala" type="object" string="Kopyala" class="oe_highlight"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!--    Create a window action to launch the "Add Attendees" wizard for OpenAcademy sessions.-->
+    <record id="action_siparis_kopyala_wizard" model="ir.actions.act_window">
+        <field name="name">Siparis Kopyala</field>
+        <field name="res_model">siparis.kopyala.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="binding_view_types">form</field>
+        <field name="binding_model_id" ref="siparis_base.model_siparis_siparis"/>
+    </record>
+</odoo>

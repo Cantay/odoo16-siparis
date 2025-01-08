@@ -21,6 +21,7 @@
                             <field name="siparis_tarihi"/>
                             <field name="image_1200" widget="image" class="oe_avatar"/>
                             <field name="siparis_dokuman_ids" widget="many2many_binary"/>
+                            <field name="taslak_siparis"/>
                         </group>
                     </group>
                     <notebook>
@@ -60,6 +61,7 @@
                 <field name="musteri_id"/>
                 <field name="siparis_tarihi"/>
                 <button name="open_form_view" string="Edit" type="object"/>
+                <button name="action_siparis_list" string="Detay" type="object"/>
             </tree>
         </field>
     </record>

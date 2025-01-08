@@ -15,6 +15,8 @@ class SiparisSatir(models.Model):
     toplam_tutar = fields.Float(string='Toplam Tutar', compute='_compute_alttoplam', store=True )
     depo = fields.Many2one('siparis.siparis.depo', string='Depo')
     
+
+    
     @api.depends('adet','fiyat')
     def _compute_alttoplam(self):
         for satir in self:

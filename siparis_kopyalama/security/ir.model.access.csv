@@ -1,0 +1,2 @@
+id,name,model_id/id,group_id/id,perm_read,perm_write,perm_create,perm_unlink
+access_siparis_kopyala_wizard_user,siparis_kopyala_wizard_user,model_siparis_kopyala_wizard,siparis_base.security_group_siparis_user,1,1,1,1

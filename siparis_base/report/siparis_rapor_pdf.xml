@@ -4,7 +4,7 @@
         <record id="action_siparis_rapor_pdf" model="ir.actions.report">
             <field name="name">Siparis Raporu</field>
             <field name="model">siparis.siparis</field>
-            <field name="report_type">qweb-html</field>
+            <field name="report_type">qweb-pdf</field>
             <field name="report_name">siparis_base.template_siparis_rapor</field>
             <field name="report_file">siparis_base.template_siparis_rapor</field>
             <field name="binding_model_id" ref="siparis_base.model_siparis_siparis"/>

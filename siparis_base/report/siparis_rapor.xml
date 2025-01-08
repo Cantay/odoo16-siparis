@@ -4,8 +4,7 @@
     <template id="template_siparis_rapor">
         <t t-call="web.basic_layout">
             <div class="page">
-            
-
+        
                 <img t-att-src="image_data_uri(docs.image_1200) if docs.image_1200 else ''" class="o_event_full_page_ticket_event_logo mb-2" style="width:150px"/>
 
                 <h2>Siparis Listesi</h2>
