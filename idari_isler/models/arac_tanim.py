@@ -14,7 +14,7 @@ class AracTanim(models.Model):
     durum = fields.Char(string='Hareket Durumu', default='Geldi')    
     marka = fields.Char(string='Marka')    
     aktif_pasif = fields.Boolean(string='Kullanım Durumu', default=True)
-    km = fields.Integer(string='Araç KM', default=0)
+    km = fields.Integer(string='Araç KM')
 
     def name_get(self):
         result = []

@@ -5,6 +5,7 @@ class Siparis(models.Model):
     _name = 'siparis.siparis'
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = 'Sipariş Modeli'
+    _order = 'id desc'
 
     name = fields.Char(string='Sipariş Kodu', required='True', default='Yeni')
     siparis_turu = fields.Selection([

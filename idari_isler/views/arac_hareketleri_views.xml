@@ -11,7 +11,7 @@
                 <field name="hareket_tarihi"/>
                 <field name="cikis_saati"/>
                 <field name="giris_saati"/>
-                <field name="cikis_km"/>
+                <field name="cikis_km" />
                 <field name="giris_km"/>
                 <field name="yapilan_km"/>
                 <field name="durum"/>
@@ -39,6 +39,7 @@
                         </group>
                         <group>
                             <field name="cikis_km"/>
+                            <field name="haraket_cikis_km"/>
                             <field name="giris_km"/>
                             <field name="yapilan_km"/>
                         </group>

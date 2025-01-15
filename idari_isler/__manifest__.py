@@ -4,7 +4,7 @@
     'author': 'Gazi Becit',
     'version':'16.0.0.1',
     'license': 'AGPL-3',
-    'depends': ['base'], # Başka bir modüle bağımlılık varsa ekleyin
+    'depends': ['base','hr'], # Başka bir modüle bağımlılık varsa ekleyin
     # XML dosyalarını ekleyebilirsiniz
     "data": [
         "views/arac_tanim_views.xml",
