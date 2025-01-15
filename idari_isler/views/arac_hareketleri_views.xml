@@ -1,0 +1,89 @@
+<odoo>
+
+    <!-- View arac.hareketleri View Tree -->
+    <record id="view_arac_hareketleri_tree" model="ir.ui.view">
+        <field name="name">view.arac.hareketleri.tree</field>
+        <field name="model">arac.hareketleri</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="arac_id"/>
+                <field name="sofor"/>
+                <field name="hareket_tarihi"/>
+                <field name="cikis_saati"/>
+                <field name="giris_saati"/>
+                <field name="cikis_km"/>
+                <field name="giris_km"/>
+                <field name="yapilan_km"/>
+                <field name="durum"/>
+                <field name="aciklama"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- View arac.hareketleri form -->
+    <record id="view_arac_hareketleri_form" model="ir.ui.view">
+        <field name="name">view.arac.hareketleri.form</field>
+        <field name="model">arac.hareketleri</field>
+        <field name="arch" type="xml">
+            <form string="Araç Hareketleri">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="arac_id"/>
+                            <field name="sofor"/>
+                            <field name="hareket_tarihi" placeholder="Araç hareket tarihi..."/>
+                        </group>
+                        <group>
+                            <field name="cikis_saati"/>
+                            <field name="giris_saati"/>
+                        </group>
+                        <group>
+                            <field name="cikis_km"/>
+                            <field name="giris_km"/>
+                            <field name="yapilan_km"/>
+                        </group>
+                        <group>
+                            <field name="durum"/>
+                            <field name="aciklama"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- View arac.hareketleri search -->
+    <record id="view_arac_hareketleri_search" model="ir.ui.view">
+        <field name="name">view.arac.hareketleri.search</field>
+        <field name="model">arac.hareketleri</field>
+        <field name="arch" type="xml">
+            <search>
+                <group expand="1" string="Group By">
+                    <filter string="Arac" name="arac_id" domain="[]" context="{'group_by':'arac_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action arac.hareketleri -->
+    <record id="action_arac_hareketleri" model="ir.actions.act_window">
+        <field name="name">Araç Hareketleri</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">arac.hareketleri</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                There is no examples click here to add new Araç Hareketleri.
+            </p>
+        </field>
+    </record>
+
+    <!-- İdari İşler Menüsü -->
+
+
+    <!-- Araç Hareketleri Menüsü (İdari İşler altında) -->
+    <menuitem id="menu_arac_hareketleri" name="Araç Hareketleri" parent="idari_isler_menu" sequence="1" action="action_arac_hareketleri"/>
+
+</odoo>

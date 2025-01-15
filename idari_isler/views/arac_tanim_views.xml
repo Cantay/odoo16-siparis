@@ -1,0 +1,61 @@
+<odoo>
+    <data>
+
+        <!-- Araç Tanımları Listesi -->
+        <record id="view_arac_tanim_tree" model="ir.ui.view">
+            <field name="name">arac.tanim.tree</field>
+            <field name="model">arac.tanim</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="arac_adi"/>
+                    <field name="plaka"/>
+                    <field name="marka"/>
+                    <field name="sube"/>
+                    <field name="durum"/>                  
+                    <field name="aktif_pasif"/>    
+                    <field name="km"/>                
+                </tree>
+            </field>
+        </record>
+
+        <!-- Araç Tanımları Formu -->
+        <record id="view_arac_tanim_form" model="ir.ui.view">
+            <field name="name">arac.tanim.form</field>
+            <field name="model">arac.tanim</field>
+            <field name="arch" type="xml">
+                <form string="Araç Tanımları">
+                    <group>
+                        <group>
+                            <field name="arac_adi"/>
+                            <field name="plaka"/>
+                            <field name="marka"/>
+                        </group>
+                        <group>
+                            <field name="sube"/>
+                            <field name="durum"/>
+                            <field name="aktif_pasif"/>    
+                            <field name="km"/>                             
+                        </group>
+                    </group>
+                </form>
+            </field>
+        </record>
+        
+        <!-- Menü Tanımları -->
+        <menuitem id="idari_isler_menu" name="İdari İşler"/>
+        <menuitem id="arac_tanim_menu" name="Araç Tanımları" parent="idari_isler_menu"/>
+
+        <!-- Aksiyon Tanımlama -->
+        <record id="action_arac_tanim" model="ir.actions.act_window">
+            <field name="name">Araç Tanımları</field>
+            <field name="res_model">arac.tanim</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- Menüye Bağlantı -->
+        <menuitem id="arac_tanim_menu_action" name="Araç Tanımları" parent="arac_tanim_menu" action="action_arac_tanim"/>
+        <menuitem id="arac_tanim_menu_action" name="Araç Tanımları" parent="arac_tanim_menu" action="action_arac_tanim"/>
+
+        
+    </data>
+</odoo>
